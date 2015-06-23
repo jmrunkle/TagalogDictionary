@@ -7,11 +7,26 @@ public class TagalogDictionary {
   }
 
 	private static void qsort(String[] words, int low, int high) {
-    return; // TODO
+    if (low < high) {
+    	int p = partition(words, low, high);
+    	qsort(words, low, p - 1);
+    	qsort(words, p + 1, high);
+    }
   }
   
   private static int partition(String[] words, int low, int high) {
-    return 0; // TODO
+    String word = words[low];
+    int i = low;
+    int j = high + 1;
+
+    while (i < j) {
+    	while (compareWords(words[++i], word) < 0 && i < high);
+    	while (compareWords(words[--j], word) > 0 && j > low);
+    	if (i < j) swap(words, i, j);
+    }
+
+    swap(words, low, j);
+    return j;
   }
   
   private static void swap(String[] words, int a, int b) {
@@ -103,6 +118,11 @@ public class TagalogDictionary {
   	assert (compareWords("ang", "nang") < 0);
   	assert (compareWords("ang", "angandang") < 0);
   	assert (compareWords("angandang", "ang") > 0);
+
+  	String[] testQSort = new String[]{"o", "ng", "k"};
+  	qsort(testQSort, 0, testQSort.length - 1);
+  	assert (Arrays.equals(testQSort, new String[]{"k", "ng", "o"}));
+
   	// sort testing
     String[] words = new String[]{"abakada","alpabet","tagalog","ako"};
     String[] sorted = sortWords(words);
