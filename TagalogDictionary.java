@@ -27,7 +27,10 @@ public class TagalogDictionary {
   
   // return a value that increases as you go through the Tagalog alphabet
   private static int rankLetter(String letter) {
-    return 0; // TODO
+    if (letter.length() > 1)        return (int) 'o';
+    if (letter.equals("k"))         return (int) 'c';
+    if (letter.compareTo("o") >= 0) return (int) letter.charAt(0) + 1;
+    else                            return (int) letter.charAt(0);
   }
   
   // compareLetters returns a positive value if the letter is later in the alph
