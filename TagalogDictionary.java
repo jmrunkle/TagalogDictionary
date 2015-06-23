@@ -6,7 +6,7 @@ public class TagalogDictionary {
     return words; // TODO
   }
 
-private static void qsort(String[] words, int low, int high) {
+	private static void qsort(String[] words, int low, int high) {
     return; // TODO
   }
   
@@ -15,7 +15,9 @@ private static void qsort(String[] words, int low, int high) {
   }
   
   private static void swap(String[] words, int a, int b) {
-    return; // TODO
+    String tmp = words[a];
+    words[a] = words[b];
+    words[b] = tmp;
   }
   
   // turn a string into an of Tagalog letters (represented as strings)
