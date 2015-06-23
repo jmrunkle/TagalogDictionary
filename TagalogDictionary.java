@@ -48,16 +48,18 @@ public class TagalogDictionary {
   	// function testing
   	String[] testSwap = new String[]{"second", "first"};
   	swap(testSwap, 0, 1);
-  	System.out.println("Actual result: "+Arrays.toString(testSwap));
-  	String[] solution = new String[]{"first", "second"};
-  	System.out.println("Should return: "+Arrays.toString(solution));
-		if (Arrays.equals(testSwap, solution)) System.out.println("PASS\n");
-  	else System.out.println("FAIL\n");
+  	assert (Arrays.equals(testSwap, new String[]{"first", "second"}));
 
+  	assert (rankLetter("a") == (int) 'a');
+  	assert (rankLetter("k") == (int) 'c');
+  	assert (rankLetter("ng") == (int) 'o');
+  	assert (rankLetter("o") == (int) 'o' + 1);
+
+  	// sort testing
     String[] words = new String[]{"abakada","alpabet","tagalog","ako"};
     String[] sorted = sortWords(words);
     System.out.println("Actual result: "+Arrays.toString(sorted));
-    solution = new String[]{"abakada", "ako", "alpabet", "tagalog"};
+    String[] solution = new String[]{"abakada", "ako", "alpabet", "tagalog"};
     System.out.println("Should return: "+Arrays.toString(solution));
     if (Arrays.equals(sorted, solution)) System.out.println("PASS\n");
     else System.out.println("FAIL\n");
