@@ -22,7 +22,30 @@ public class TagalogDictionary {
   
   // turn a string into an of Tagalog letters (represented as strings)
   private static String[] getLetters(String word) {
-    return new String[word.length()]; // TODO
+    int numLetters = word.length();
+    String[] letters = new String[numLetters];
+    int j = 0;
+
+    for (int i = 0; i < word.length(); i++) {
+    	String s = word.substring(i, i + 1);
+
+    	if (i < word.length() - 1 && 
+    		word.substring(i, i + 2).equals("ng")) {
+    		s = "ng";
+    	  i++;
+    	  numLetters--;
+    	}
+
+    	letters[j++] = s;
+    }
+
+    if (numLetters < word.length()) {
+    	String[] newLetters = new String[numLetters];
+    	for (int i = 0; i < numLetters; i++) newLetters[i] = letters[i];
+    	letters = newLetters;
+    }
+
+    return letters;
   }
   
   // return a value that increases as you go through the Tagalog alphabet
@@ -60,6 +83,8 @@ public class TagalogDictionary {
   	assert (compareLetters("b", "a") > 0);
   	assert (compareLetters("k", "d") < 0);
   	assert (compareLetters("ng", "o") < 0);
+
+  	assert (Arrays.equals(getLetters("ingkign"), new String[]{"i", "ng", "k", "i", "g", "n"}));
 
   	// sort testing
     String[] words = new String[]{"abakada","alpabet","tagalog","ako"};
