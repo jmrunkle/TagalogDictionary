@@ -38,14 +38,26 @@ public class TagalogDictionary {
     return rankLetter(a) - rankLetter(b);
   }
   
+  // compareWords returns a positive value if the word is later lexigraphically
   private static int compareWords(String wordA, String wordB) {
-    return 0; //TODO
+    return 0; // TODO
   }
+
+  // the main function - tests the previous examples and cases
   public static void main(String args[]) {
+  	// function testing
+  	String[] testSwap = new String[]{"second", "first"};
+  	swap(testSwap, 0, 1);
+  	System.out.println("Actual result: "+Arrays.toString(testSwap));
+  	String[] solution = new String[]{"first", "second"};
+  	System.out.println("Should return: "+Arrays.toString(solution));
+		if (Arrays.equals(testSwap, solution)) System.out.println("PASS\n");
+  	else System.out.println("FAIL\n");
+
     String[] words = new String[]{"abakada","alpabet","tagalog","ako"};
     String[] sorted = sortWords(words);
     System.out.println("Actual result: "+Arrays.toString(sorted));
-    String[] solution = new String[]{"abakada", "ako", "alpabet", "tagalog"};
+    solution = new String[]{"abakada", "ako", "alpabet", "tagalog"};
     System.out.println("Should return: "+Arrays.toString(solution));
     if (Arrays.equals(sorted, solution)) System.out.println("PASS\n");
     else System.out.println("FAIL\n");
