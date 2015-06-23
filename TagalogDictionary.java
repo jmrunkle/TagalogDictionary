@@ -35,7 +35,7 @@ public class TagalogDictionary {
   
   // compareLetters returns a positive value if the letter is later in the alph
   private static int compareLetters(String a, String b) {
-    return 0; //TODO
+    return rankLetter(a) - rankLetter(b);
   }
   
   private static int compareWords(String wordA, String wordB) {
