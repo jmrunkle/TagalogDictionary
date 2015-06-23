@@ -55,6 +55,12 @@ public class TagalogDictionary {
   	assert (rankLetter("ng") == (int) 'o');
   	assert (rankLetter("o") == (int) 'o' + 1);
 
+  	assert (compareLetters("a", "b") < 0);
+  	assert (compareLetters("a", "a") == 0);
+  	assert (compareLetters("b", "a") > 0);
+  	assert (compareLetters("k", "d") < 0);
+  	assert (compareLetters("ng", "o") < 0);
+
   	// sort testing
     String[] words = new String[]{"abakada","alpabet","tagalog","ako"};
     String[] sorted = sortWords(words);
