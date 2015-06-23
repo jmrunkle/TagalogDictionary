@@ -3,7 +3,9 @@ import java.util.Arrays;
 public class TagalogDictionary {
 
   public static String[] sortWords(String[] words) {
-    return words; // TODO
+    String[] sorted = words.clone();
+    qsort(sorted, 0, sorted.length - 1);
+    return sorted;
   }
 
 	private static void qsort(String[] words, int low, int high) {
@@ -21,7 +23,7 @@ public class TagalogDictionary {
 
     while (i < j) {
     	while (compareWords(words[++i], word) < 0 && i < high);
-    	while (compareWords(words[--j], word) > 0 && j > low);
+      while (compareWords(word, words[--j]) < 0 && j > low);
     	if (i < j) swap(words, i, j);
     }
 
@@ -86,7 +88,7 @@ public class TagalogDictionary {
     
     for (int i = 0; i < lettersA.length && i < lettersB.length; i++) {
       String a = lettersA[i];
-      String b = lettersA[i];
+      String b = lettersB[i];
       if (!a.equals(b)) return compareLetters(a, b);
     }
     
@@ -119,9 +121,12 @@ public class TagalogDictionary {
   	assert (compareWords("ang", "angandang") < 0);
   	assert (compareWords("angandang", "ang") > 0);
 
-  	String[] testQSort = new String[]{"o", "ng", "k"};
+  	String[] testQSort = new String[]{"o", "ng", "k", "ang"};
   	qsort(testQSort, 0, testQSort.length - 1);
-  	assert (Arrays.equals(testQSort, new String[]{"k", "ng", "o"}));
+  	assert (Arrays.equals(testQSort, new String[]{"ang", "k", "ng", "o"}));
+  	testQSort = new String[]{"ang", "nang", "kang"};
+  	qsort(testQSort, 0, testQSort.length - 1);
+  	assert (Arrays.equals(testQSort, new String[]{"ang", "kang", "nang"}));
 
   	// sort testing
     String[] words = new String[]{"abakada","alpabet","tagalog","ako"};
