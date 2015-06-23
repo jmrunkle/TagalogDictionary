@@ -63,8 +63,21 @@ public class TagalogDictionary {
   
   // compareWords returns a positive value if the word is later lexigraphically
   private static int compareWords(String wordA, String wordB) {
-    return 0; // TODO
-  }
+		// special case: same word - return 0
+    if (wordA.equals(wordB)) return 0;
+    
+    String[] lettersA = getLetters(wordA);
+    String[] lettersB = getLetters(wordB);
+    
+    for (int i = 0; i < lettersA.length && i < lettersB.length; i++) {
+      String a = lettersA[i];
+      String b = lettersA[i];
+      if (!a.equals(b)) return compareLetters(a, b);
+    }
+    
+    if (lettersA.length < lettersB.length) return -1;
+    else                                   return 1;
+	}
 
   // the main function - tests the previous examples and cases
   public static void main(String args[]) {
@@ -86,6 +99,10 @@ public class TagalogDictionary {
 
   	assert (Arrays.equals(getLetters("ingkign"), new String[]{"i", "ng", "k", "i", "g", "n"}));
 
+  	assert (compareWords("ang", "ang") == 0);
+  	assert (compareWords("ang", "nang") < 0);
+  	assert (compareWords("ang", "angandang") < 0);
+  	assert (compareWords("angandang", "ang") > 0);
   	// sort testing
     String[] words = new String[]{"abakada","alpabet","tagalog","ako"};
     String[] sorted = sortWords(words);
